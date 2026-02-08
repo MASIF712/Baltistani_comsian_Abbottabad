@@ -1,0 +1,20 @@
+CREATE TABLE `members` (
+	`id` int AUTO_INCREMENT NOT NULL,
+	`name` varchar(255) NOT NULL,
+	`email` varchar(320),
+	`phone` varchar(20),
+	`yearOfAdmission` int NOT NULL,
+	`degreeProgram` varchar(100) NOT NULL,
+	`rollNumber` varchar(50) NOT NULL,
+	`department` varchar(255),
+	`city` varchar(100) NOT NULL,
+	`permanentAddress` text,
+	`photoUrl` text,
+	`bio` text,
+	`socialLinks` text,
+	`isVerified` boolean NOT NULL DEFAULT false,
+	`createdAt` timestamp NOT NULL DEFAULT (now()),
+	`updatedAt` timestamp NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
+	CONSTRAINT `members_id` PRIMARY KEY(`id`),
+	CONSTRAINT `members_rollNumber_unique` UNIQUE(`rollNumber`)
+);

@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1770543695085,
+      "tag": "0000_classy_polaris",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1770543732411,
+      "tag": "0001_large_steve_rogers",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1770544623672,
+      "tag": "0002_careful_mister_fear",
+      "breakpoints": true
+    }
+  ]
+}
