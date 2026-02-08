@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useAuth } from "@/_core/hooks/useAuth";
-import DashboardLayout from "@/components/DashboardLayout";
+import CleanLayout from "@/components/CleanLayout";
+import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Plus, Edit2, Trash2, Loader2 } from "lucide-react";
-import { trpc } from "@/lib/trpc";
+import { Plus } from "lucide-react";
 import { toast } from "sonner";
 import MemberForm from "@/components/MemberForm";
 import MembersList from "@/components/MembersList";
@@ -37,37 +37,40 @@ export default function AdminDashboard() {
   };
 
   return (
-    <DashboardLayout>
-      <div className="space-y-6">
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-bold">Member Management</h1>
-            <p className="text-muted-foreground mt-1">Manage Baltistan Comsian members</p>
+    <>
+      <Header />
+      <CleanLayout>
+        <div className="space-y-6 max-w-7xl mx-auto">
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-3xl font-bold">Member Management</h1>
+              <p className="text-muted-foreground mt-1">Manage Baltistan Comsian members</p>
+            </div>
+            <Dialog open={isFormOpen} onOpenChange={setIsFormOpen}>
+              <DialogTrigger asChild>
+                <Button className="gap-2">
+                  <Plus className="w-4 h-4" />
+                  Add Member
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+                <DialogHeader>
+                  <DialogTitle>{editingMember ? "Edit Member" : "Add New Member"}</DialogTitle>
+                </DialogHeader>
+                <MemberForm
+                  initialData={editingMember}
+                  onSuccess={() => {
+                    handleFormClose();
+                    toast.success(editingMember ? "Member updated successfully" : "Member added successfully");
+                  }}
+                />
+              </DialogContent>
+            </Dialog>
           </div>
-          <Dialog open={isFormOpen} onOpenChange={setIsFormOpen}>
-            <DialogTrigger asChild>
-              <Button className="gap-2">
-                <Plus className="w-4 h-4" />
-                Add Member
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
-              <DialogHeader>
-                <DialogTitle>{editingMember ? "Edit Member" : "Add New Member"}</DialogTitle>
-              </DialogHeader>
-              <MemberForm
-                initialData={editingMember}
-                onSuccess={() => {
-                  handleFormClose();
-                  toast.success(editingMember ? "Member updated successfully" : "Member added successfully");
-                }}
-              />
-            </DialogContent>
-          </Dialog>
-        </div>
 
-        <MembersList onEdit={handleEditMember} />
-      </div>
-    </DashboardLayout>
+          <MembersList onEdit={handleEditMember} />
+        </div>
+      </CleanLayout>
+    </>
   );
 }

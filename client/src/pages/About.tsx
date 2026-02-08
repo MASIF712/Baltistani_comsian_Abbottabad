@@ -1,9 +1,11 @@
 import { Card } from "@/components/ui/card";
+import Header from "@/components/Header";
 import { Mountain, Users, BookOpen, Globe } from "lucide-react";
 
 export default function About() {
   return (
     <div className="min-h-screen bg-background">
+      <Header />
       {/* Hero Section */}
       <div className="bg-gradient-to-br from-primary/20 via-accent/10 to-primary/10 py-16 px-4">
         <div className="max-w-4xl mx-auto text-center">

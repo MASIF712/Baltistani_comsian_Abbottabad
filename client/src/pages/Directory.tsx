@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import { trpc } from "@/lib/trpc";
 import MemberCard from "@/components/MemberCard";
+import Header from "@/components/Header";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
@@ -32,6 +33,7 @@ export default function Directory() {
 
   return (
     <div className="min-h-screen bg-background">
+      <Header />
       {/* Hero Section */}
       <div className="bg-gradient-to-br from-primary/10 to-accent/10 py-12 px-4">
         <div className="max-w-6xl mx-auto">
